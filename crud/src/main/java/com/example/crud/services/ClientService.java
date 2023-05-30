@@ -19,6 +19,12 @@ public class ClientService {
     ClientRepository repository;
 
     @Transactional(readOnly = true)
+    public Page<ClientDTO> findAllPagable(PageRequest pageRequest) {
+        Page<Client> list = repository.findAll(pageRequest);
+        return list.map(client -> new ClientDTO(client));
+    }
+
+    @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
         Optional<Client> obj = repository.findById(id);
         // Client entity = obj.get();
@@ -26,9 +32,18 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
-    @Transactional(readOnly = true)
-    public Page<ClientDTO> findAllPagable(PageRequest pageRequest) {
-        Page<Client> list = repository.findAll(pageRequest);
-        return list.map(client -> new ClientDTO(client));
+    public ClientDTO insert(ClientDTO dto) {
+        Client entity = new Client();
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity);
+        return new ClientDTO(entity);
+    }
+
+    private void copyDtoToEntity(ClientDTO dto, Client entity) {
+        entity.setName(dto.getName());
+        entity.setCpf(dto.getCpf());
+        entity.setIncome(dto.getIncome());
+        entity.setBirthDate(dto.getBirthDate());
+        entity.setChildren(dto.getChildren());
     }
 }
