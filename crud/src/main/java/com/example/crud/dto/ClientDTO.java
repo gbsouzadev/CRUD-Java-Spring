@@ -17,6 +17,7 @@ public class ClientDTO {
     }
 
     public ClientDTO(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
+        this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.income = income;
@@ -25,6 +26,7 @@ public class ClientDTO {
     }
 
     public ClientDTO(Client entity) {
+        this.id = entity.getId();
         this.name = entity.getName();
         this.cpf = entity.getCpf();
         this.income = entity.getIncome();
