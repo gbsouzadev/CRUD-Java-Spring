@@ -1,0 +1,10 @@
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('John Doe', '684.225.471-04', 4500.00, TIMESTAMP WITH TIME ZONE '1989-12-24T12:45:00Z', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Mary Jane', '475.944.786-57', 5000.00, TIMESTAMP WITH TIME ZONE '1996-03-04T15:25:00Z', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('William Smith', '704.421.591-29', 3000.00, TIMESTAMP WITH TIME ZONE '1998-01-17T22:10:00Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Simon Walker', '784.558.944-66', 6000.00, TIMESTAMP WITH TIME ZONE '1986-09-7T05:50:00Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Jessica Miles', '308.832.541-82', 4000.00, TIMESTAMP WITH TIME ZONE '1992-11-30T17:30:00Z', 3);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Chad Murray', '850.256.437-40', 2400.00, TIMESTAMP WITH TIME ZONE '2004-04-12T02:20:00Z', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Emma Springs', '205.896.551-59', 3800.00, TIMESTAMP WITH TIME ZONE '1997-01-03T13:05:00Z', 0);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Jack Cho', '827.323.828-84', 5300.00, TIMESTAMP WITH TIME ZONE '2001-10-21T23:40:00Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Eliza Holf', '061.395.655-96', 3100.00, TIMESTAMP WITH TIME ZONE '2003-07-13T01:25:00Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Veronica Sorbel', '152.425.503-33', 9000.00, TIMESTAMP WITH TIME ZONE '1988-02-27T09:50:00Z', 2);
