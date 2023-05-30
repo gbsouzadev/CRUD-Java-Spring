@@ -5,6 +5,7 @@ import com.example.crud.entities.Client;
 import com.example.crud.repositories.ClientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
+    @Transactional
     public ClientDTO insert(ClientDTO dto) {
         Client entity = new Client();
         copyDtoToEntity(dto, entity);
@@ -39,6 +41,7 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
+    @Transactional
     public ClientDTO update(ClientDTO dto, Long id) {
         try {
             Client entity = repository.getReferenceById(id);
@@ -51,7 +54,18 @@ public class ClientService {
         }
     }
 
-
+    public void delete(Long id) {
+        if (repository.existsById(id)) {
+            try {
+                repository.deleteById(id);
+            }
+            catch (DataIntegrityViolationException e) {
+                throw new DataIntegrityViolationException("Can't delete this Client(id: "+id+") due to Database integrity configuration");
+            }
+        } else {
+            throw new EntityNotFoundException("Can't find a Client corresponding the informed id: " + id);
+        }
+    }
 
     private void copyDtoToEntity(ClientDTO dto, Client entity) {
         entity.setName(dto.getName());
@@ -60,4 +74,5 @@ public class ClientService {
         entity.setBirthDate(dto.getBirthDate());
         entity.setChildren(dto.getChildren());
     }
+
 }
