@@ -39,6 +39,20 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
+    public ClientDTO update(ClientDTO dto, Long id) {
+        try {
+            Client entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            entity = repository.save(entity);
+            return new ClientDTO(entity);
+        }
+        catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("Can't find a Client corresponding the informed id: " + id);
+        }
+    }
+
+
+
     private void copyDtoToEntity(ClientDTO dto, Client entity) {
         entity.setName(dto.getName());
         entity.setCpf(dto.getCpf());
