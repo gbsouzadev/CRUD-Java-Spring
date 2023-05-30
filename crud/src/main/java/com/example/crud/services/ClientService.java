@@ -5,6 +5,8 @@ import com.example.crud.entities.Client;
 import com.example.crud.repositories.ClientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +18,7 @@ public class ClientService {
     @Autowired
     ClientRepository repository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
         Optional<Client> obj = repository.findById(id);
         // Client entity = obj.get();
@@ -24,4 +26,9 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
+    @Transactional(readOnly = true)
+    public Page<ClientDTO> findAllPagable(PageRequest pageRequest) {
+        Page<Client> list = repository.findAll(pageRequest);
+        return list.map(client -> new ClientDTO(client));
+    }
 }
