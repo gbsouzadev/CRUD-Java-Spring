@@ -13,11 +13,11 @@
     </a>
 </p>
 <p align="center">Projeto Java com Spring para treinar o desenvolvimento de CRUD de web services que dá acesso a um recurso “Client” conforme o diagrama:</p>
-<
-<<figure>
+<figure>
 <p align="center">
   <img src="https://ibb.co/FqPzyvB" height="350" width="450" alt="Diagrama de Classe"/><br>
 </p>
+</figure>
 
 <p align="center">
     <a href="https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.1.0&packaging=jar&jvmVersion=17&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&dependencies=web,data-jpa,h2">
