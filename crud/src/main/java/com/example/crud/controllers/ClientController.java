@@ -5,6 +5,7 @@ import com.example.crud.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +21,8 @@ public class ClientController {
     ClientService service;
 
     @GetMapping
-    public ResponseEntity<Page<ClientDTO>> findAllPagable(
-            @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "linesPerPage", defaultValue = "5") Integer linesPerPage,
-            @RequestParam(value = "direction", defaultValue = "ASC") Sort.Direction direction,
-            @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
-    ){
-        PageRequest pageRequest = PageRequest.of(page, linesPerPage,direction, orderBy);
-        Page<ClientDTO> list = service.findAllPagable(pageRequest);
+    public ResponseEntity<Page<ClientDTO>> findAllPagable(Pageable pageable){
+        Page<ClientDTO> list = service.findAllPagable(pageable);
         return ResponseEntity.ok().body(list);
     }
 

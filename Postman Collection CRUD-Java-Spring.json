@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/clients?page=0&linesPerPage=5&direction=ASC&orderBy=id",
+							"raw": "{{host}}/clients?page=0&size=5&sort=id,desc",
 							"host": [
 								"{{host}}"
 							],
